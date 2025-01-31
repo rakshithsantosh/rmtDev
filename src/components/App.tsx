@@ -8,15 +8,14 @@ function App() {
   const [jobItems, setJobItems] = useState([]);
   const [searchText, setSearchText] = useState("");
   const fetchData = async (searchText: string) => {
-    const response = await fetch(
-      `https://bytegrad.com/corse-assets/projects/rmtdev/api/data?search=${searchText}`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      }
-    );
+    console.log(`/api/data?search`);
+    const response = await fetch(`/api/remote-jobs?search=${searchText}`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    });
+    console.log(response);
     const data = await response.json();
     setJobItems(data.jobItems);
   };
